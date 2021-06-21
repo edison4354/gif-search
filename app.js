@@ -6,6 +6,11 @@ const app = express();
 
 // Middleware 
 
+const exphbs = require('express-handlebars');
+
+app.engine('handlebars', exphbs({deafaultLayout: 'main'}));
+app.set('view engine', 'handlebars');
+
 // Routes
 
 // app.get('/:username', (req, res) => {
@@ -14,8 +19,17 @@ const app = express();
 // })
 
 app.get('/', (req, res) => {
-    res.send('Hello Squirrel');
+    // set the url of the gif
+    const gifUrl = 'https://media1.tenor.com/images/561c988433b8d71d378c9ccb4b719b6c/tenor.gif?itemid=10058245'
+    res.render('hello-gif', {gifUrl});
 });
+
+app.get('/greetings/:name', (req, res) => {
+    // grab the name from the path provided 
+    const name = req.params.name;
+    // render the greetings view, passing along the name
+    res.render('greetings', {name});
+})
 
 // Start Server 
 
