@@ -13,11 +13,11 @@ const app = express();
 //     // Then render the template to display the users's info
 // })
 
-// app.get('/', (req, res) => {
-//     res.send('Hello Squirrel');
-// });
+app.get('/', (req, res) => {
+    res.send('Hello Squirrel');
+});
 
-// Start Server
+// Start Server 
 
 app.listen(3000, () => {
     console.log('Gif Search listening on port localhost:3000!')
